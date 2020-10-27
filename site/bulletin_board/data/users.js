@@ -6,6 +6,48 @@ var saltRounds = 10;
 
 var users = {}
 
+
+
+users.Editing_profiles = (Editing, user, callback) => {
+  var success = true;
+  var error_message = "";
+  if (!success) {
+    var result = {
+      success: false,
+      error_message: error_message
+    };
+    return callback(result);
+  }
+var sql = `
+UPDATE Users
+SET firstName = ?,
+lastName = ?,
+birthdate= ?,
+bio = ?,
+gender = ?
+WHERE id = ?
+`
+var params =[Editing.firstName,Editing.lastName,Editing.birthdate,Editing.bio,Editing.gender,user.id];
+db.run(sql, params, function (err, result) {
+  callback();
+});
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 /**
  * Authenticates a user.
  *
