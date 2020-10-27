@@ -146,3 +146,59 @@ function login(username, password, callback) {
       }
   });
 }
+
+
+function create_comment(commentt,post_id,callback){
+
+  let  comment={
+    comment:commentt
+  }
+
+  $.ajax({
+    type: 'POST',
+    url: "/posts/"+post_id+"/comments",
+    data: JSON.stringify(comment),
+    contentType: "application/json; charset=utf-8",
+    dataType: "json",
+    success: function(data) {
+             callback(data)
+     },
+    error: function(error){
+      console.log('error',error)
+    }
+  })
+}
+
+function remove_comment(comment_id,callback){
+  $.ajax({
+    type: 'DELETE',
+    url: "/posts/comments/"+comment_id,
+    success: function() {
+      callback()
+    },
+    error: function(error){
+      console.log('error',error)
+    }
+  })
+}
+
+
+function edit_comment(comment_id,commentMessage,callback){
+  let  comment={
+       comment:commentMessage
+    }
+       $.ajax({
+       type: 'PUT', 
+       url: '/posts/comments/'+comment_id,
+       data: JSON.stringify(comment),
+       contentType: "application/json; charset=utf-8",
+       dataType: "json",
+       success: function(newComment) {
+       callback(newComment)
+       },
+       error: function(error){
+         console.log('error',error)
+       }
+     })
+    }
+  
