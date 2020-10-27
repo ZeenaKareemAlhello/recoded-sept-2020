@@ -6,7 +6,7 @@ var saltRounds = 10;
 
 var users = {}
 
-
+// Add information in profile
 
 users.Editing_profiles = (Editing, user, callback) => {
   var success = true;
