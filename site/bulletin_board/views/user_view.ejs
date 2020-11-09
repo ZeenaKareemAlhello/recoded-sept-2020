@@ -6,7 +6,7 @@
     <div class="row">
         <div class="col-6 col-md-3" style="background-color: #2E3841; padding-bottom: 30%;">
             <div >
-                <img src="https://i.pinimg.com/originals/51/f6/fb/51f6fb256629fc755b8870c801092942.png" class="user-info-image">
+                <img src= "<%= user.image_url %>" class="user-info-image">
             </div>
             <div class="profile_left_side_text">
                 <a style="color: white; font-size:20px;"><%= user.username %></a>
@@ -96,6 +96,4 @@
 </div>
       </div>      
 </div>
-<%- include('footer', { javascript_uri: '/javascripts/create_post.js' }); %>
-
 <%- include('footer', { javascript_uri: '/javascripts/view_post.js' }); %>
