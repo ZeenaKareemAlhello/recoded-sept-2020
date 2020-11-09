@@ -87,25 +87,21 @@ router.post('/', (req, res, next) => {
 });
 
 router.get('/profile', (req, res, next) => {
-  res.redirect("profile/"+req.session.passport.user);
-});
-router.get('/profile/:id', (req, res, next) => {
-  datasource.retrieve(req.params['id'], req.user.id, (user) => {
+  datasource.get(req.user.id,  (user) => {
     postsourece.retrieveperuser(req.user.id, (posts) => {
       postsourece.post_liked(req.user.id, (posts_liked) => {
-        console.log(posts)
-
         res.render('profile_view', { name : user.username, birthdate : user.birthdate , user: user ,posts : posts,posts_liked:posts_liked});
       });});
-  });
-});
+  });});
 
 router.get('/:id', (req, res, next) => {
-  datasource.retrieve(req.params['id'], req.user.id, (user) => {
-    postsourece.retrieveperuser(req.user.id, (posts) => {
-      postsourece.post_liked(req.user.id, (posts_liked) => {
+  userId=req.params['id'];
+  datasource.get(userId, (user) => {
+    postsourece.retrieveperuser(userId, (posts) => {
+      postsourece.post_liked(userId, (posts_liked) => {
         res.render('user_view', { name : user.username, birthdate : user.birthdate , user: user ,posts : posts,posts_liked:posts_liked});
       });});
   });
 });
+
 module.exports = router;
