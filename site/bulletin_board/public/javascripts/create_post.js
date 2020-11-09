@@ -31,7 +31,6 @@ post_form.submit((event) => {
 $("#user_edit_button").click((event) => {
   $("#user_information").css("display", "none");
   $("#user_editing").css("display", "block");
-event.preventDefault();
 } );
 
 
