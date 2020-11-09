@@ -122,40 +122,36 @@ users.get = (id, callback) => {
       callback(null);
       return;
     }
-    var user = {
-      id: row.id,
-      username: row.username
-    };
-    callback(user);
-  });
-};
-
-
-users.retrieve = (id, userId, callback) => {
-  var sql = `
-    SELECT
-      Users.id AS id,
-      Users.username,
-      Users.firstName,
-      Users.lastName,
-      Users.birthdate,
-      Users.gender,
-      Users.bio,
-      Users.join_data,
-      Users.image_url,
-      '/users/' + Users.id AS url
-    FROM
-      Users
-    WHERE
-      Users.id = ?
-  `;
-  db.get(sql, [ id ], (err, row) => {
-    if (err || !row) {
-      return;
-    }
     callback(row);
   });
 };
+
+
+// users.retrieve = (id, userId, callback) => {
+//   var sql = `
+//     SELECT
+//       Users.id AS id,
+//       Users.username,
+//       Users.firstName,
+//       Users.lastName,
+//       Users.birthdate,
+//       Users.gender,
+//       Users.bio,
+//       Users.join_data,
+//       Users.image_url,
+//       '/users/' + Users.id AS url
+//     FROM
+//       Users
+//     WHERE
+//       Users.id = ?
+//   `;
+//   db.get(sql, [ id ], (err, row) => {
+//     if (err || !row) {
+//       return;
+//     }
+//     callback(row);
+//   });
+// };
 
 
 
