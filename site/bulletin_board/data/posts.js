@@ -67,13 +67,13 @@ posts.retrieveperuser = (userId, callback) => {
     FROM
       Posts
       INNER JOIN Users AS Author ON Posts.user_id = Author.id
-      LEFT OUTER JOIN PostUpvotes ON PostUpvotes.post_id = Posts.id AND PostUpvotes.user_id = ?
+      LEFT OUTER JOIN PostUpvotes ON PostUpvotes.post_id = Posts.id AND PostUpvotes.user_id = Author.id
     WHERE
     Author.id = ?
     ORDER BY
       date DESC
   `;
-  db.all(sql, [ userId,userId ], (err, rows) => {
+  db.all(sql, [userId ], (err, rows) => {
     if (err) {
       callback([]);
       return;
@@ -98,7 +98,7 @@ posts.post_liked = (userId, callback) => {
     FROM
       Posts
       INNER JOIN Users AS Author ON Posts.user_id = Author.id
-      LEFT OUTER JOIN PostUpvotes ON PostUpvotes.post_id = Posts.id AND PostUpvotes.user_id = ?
+      INNER JOIN PostUpvotes ON PostUpvotes.post_id = Posts.id AND PostUpvotes.user_id = ?
     WHERE
     liked = 1
     ORDER BY
