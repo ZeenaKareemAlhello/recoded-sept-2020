@@ -127,33 +127,6 @@ users.get = (id, callback) => {
 };
 
 
-// users.retrieve = (id, userId, callback) => {
-//   var sql = `
-//     SELECT
-//       Users.id AS id,
-//       Users.username,
-//       Users.firstName,
-//       Users.lastName,
-//       Users.birthdate,
-//       Users.gender,
-//       Users.bio,
-//       Users.join_data,
-//       Users.image_url,
-//       '/users/' + Users.id AS url
-//     FROM
-//       Users
-//     WHERE
-//       Users.id = ?
-//   `;
-//   db.get(sql, [ id ], (err, row) => {
-//     if (err || !row) {
-//       return;
-//     }
-//     callback(row);
-//   });
-// };
-
-
 
 
 module.exports = users;
