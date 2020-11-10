@@ -3,6 +3,8 @@ var router = express.Router();
 
 var datasource = require('../data/users.js')
 
+var protected = require('connect-ensure-login').ensureLoggedIn('/');
+
 /**
  * The "Login" endpoint.
  *
@@ -85,7 +87,7 @@ router.post('/', (req, res, next) => {
 });
 
 /*--------changes password--------------*/
-router.post('/edit_password/', (req, res, next) => {
+router.post('/edit_password/',protected, (req, res, next) => {
   datasource.Editing_password(req.body, req.user, (result) => {
     res.send(result);
   });

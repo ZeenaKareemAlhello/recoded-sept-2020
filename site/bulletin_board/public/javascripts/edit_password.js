@@ -16,12 +16,13 @@ $("#save_button").click((event) => {
     }
   });
   
-  event.preventDefault();
+  
   
 }
 else
   {
-    console.log("err")
+    create_user_error_message.text("Passwords do not match!");
+    create_user_error.show();
   }
   })
   
