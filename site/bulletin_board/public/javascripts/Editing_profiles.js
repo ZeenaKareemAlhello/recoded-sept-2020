@@ -36,7 +36,12 @@ Editing_profiles(firstName, lastName, birthdate,bio,gender,function(result){
   }
 
 });
-event.preventDefault();
-
-
-} );
+})
+$("#edit_password").click((event) => {
+  $("#passwordpageview").css("display", "block");
+  $("#editinfo").css("display", "none");
+})
+$("#viewinfoedit").click((event) => {
+  $("#passwordpageview").css("display", "none");
+  $("#editinfo").css("display", "flex");
+})
