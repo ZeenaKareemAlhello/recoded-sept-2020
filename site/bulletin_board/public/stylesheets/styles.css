@@ -140,6 +140,7 @@
   color: #868e96;
 }
 
+<<<<<<< HEAD
 .user-info-row{
   background-color: #FDFDFD;
   margin-top: 50px;
@@ -325,3 +326,129 @@ font-size: 12px;
   {
     background-color:#2E3841 ;
   }
+=======
+
+
+
+
+
+
+/* profile */
+
+
+
+
+
+  style italic{
+  margin-top: 0 ;
+  color: #868E96;
+}
+  .user-info-row{
+    background-color: #FDFDFD;
+    margin-top: 50px;
+    padding: 20px;
+    border-radius: 25px;
+  }
+  .user-info-image{
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 5%;
+    width: 35%;
+    border-radius: 50%;
+  }
+  .user-info-text-main{
+  position: relative;
+  top: 30%;
+  }
+  h1{
+    font-family: "Roboto";
+    font-size: 30px;
+    color: #343A40;
+    }
+  .user-info-Button
+  {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 35%;
+    height: 35px;
+      background-color: #3AD89B;
+      border: none;
+      color: white;
+      text-align: center;
+      text-decoration: none;
+      border-radius: 50px;
+      font-size: 15px;
+      margin-top: 6%;
+      margin-bottom: 6%;
+  }
+  .button-contener
+  {
+    margin-top: 10%;
+  }
+  .edit_input
+  {
+    background-color: transparent;
+    color: #EEEEEE;
+    outline: none;
+    outline-style: none;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    border-bottom: solid #41706A 1px;  
+  }
+ 
+  .profile_left_side_text_emojy
+  {
+    display: block;
+    margin-left: 13%;
+    margin-right: auto;
+    padding-top: 4%;
+  color: #637987;
+  font-size: 12px;
+  }
+  
+  ::placeholder {
+    color: #53AB92;
+  }
+  .profile_edit_element
+  {
+    margin-top: auto;
+    margin-right: 20%;
+    margin-left: 7%;
+  }
+  .profile_edit_betweenelement
+  {
+    margin-top: 10%;
+    margin-bottom: 30%;
+  }
+  .user-edit-image
+  {
+    display: block;
+    border-radius: 10px;
+    width: 50%;
+  }
+  .save-Button
+  {
+    display: block;
+      width: 50%;
+    height: 35px;
+      background-color: #3AD89B;
+      border: none;
+      color: white;
+      text-align: center;
+      text-decoration: none;
+      border-radius: 50px;
+      font-size: 15px;
+      /* margin-top: 6%; 
+       margin-bottom: 6%;  */
+  }
+  .profile-edit-icon
+  {
+    color: #3AD89B;
+  }
+  
+ 
+  
+>>>>>>> origin/Editing_profilee

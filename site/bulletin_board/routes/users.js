@@ -3,6 +3,24 @@ var router = express.Router();
 var postsourece = require('../data/posts');
 var datasource = require('../data/users.js')
 
+
+
+//Add information in profile 
+
+router.post('/Editing_profiles', (req, res, next) => {
+  var profile = req.body;
+  // console.log(profile.bio);
+  datasource.Editing_profiles(profile, req.user, (result) => {
+   
+   res.send(result);
+ });
+
+});
+router.get('/Editing_profiles', (req, res, next) => {
+ res.render('Editing_profiles');
+ 
+});
+
 /**
  * The "Login" endpoint.
  *
