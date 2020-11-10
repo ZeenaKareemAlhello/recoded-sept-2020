@@ -1,4 +1,39 @@
 
+// Add information in profile
+
+function Editing_profiles(firstName, lastName,birthdate,bio,gender ,callback) {
+  var Editing = {
+    firstName: firstName,
+    lastName: lastName,
+    birthdate:birthdate, 
+    bio:bio,
+    gender:gender
+  };
+
+  $.ajax({
+      type: "POST",
+      url: "/users/Editing_profiles",
+      data: JSON.stringify(Editing),
+      contentType: "application/json; charset=utf-8",
+      dataType: "json",
+      success: function(result){
+        callback({
+          success: true,
+          redirect_uri: result.redirect_uri
+        });
+      },
+      error: function(error) {
+        callback({
+          success: false,
+          redirect_uri: null,
+          error_message: 'Error '
+          
+        });
+      }
+  });
+}
+
+
 // Posts
 
 /**

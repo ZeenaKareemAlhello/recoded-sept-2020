@@ -1,7 +1,26 @@
 var express = require('express');
 var router = express.Router();
 
-var datasource = require('../data/users.js')
+var datasource = require('../data/users.js');
+var protected = require('connect-ensure-login').ensureLoggedIn('/');
+
+
+
+//Add information in profile 
+
+router.post('/Editing_profiles',protected, (req, res, next) => {
+  var profile = req.body;
+  // console.log(profile.bio);
+  datasource.Editing_profiles(profile, req.user, (result) => {
+   
+   res.send(result);
+ });
+
+});
+router.get('/Editing_profiles',protected, (req, res, next) => {
+ res.render('Editing_profiles');
+ 
+});
 
 /**
  * The "Login" endpoint.
