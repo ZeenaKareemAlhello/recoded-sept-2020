@@ -9,7 +9,12 @@
                 <img src= "<%= user.image_url %>" class="user-info-image">
             </div>
             <div class="profile_left_side_text">
-                <a style="color: white; font-size:20px;"><%= user.username %></a>
+                <a style="color: white; font-size:20px;">
+                    <%if (user.firstName){%>
+                    <%= user.firstName %>
+                    <%}else{%>
+                    <%= "privet" %>
+                    <% } %></a>
                 </div>               
             <div class="profile_left_side_text">
                 <a>bio : </a>

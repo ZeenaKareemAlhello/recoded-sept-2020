@@ -2,6 +2,7 @@ var express = require('express');
 var router = express.Router();
 var postsourece = require('../data/posts');
 var datasource = require('../data/users.js')
+var protected = require('connect-ensure-login').ensureLoggedIn('/');
 
 
 
@@ -100,7 +101,7 @@ router.post('/', (req, res, next) => {
   });
 });
 
-router.get('/profile', (req, res, next) => {
+router.get('/profile',protected, (req, res, next) => {
   datasource.get(req.user.id,  (user) => {
     postsourece.retrieveperuser(req.user.id, (posts) => {
       postsourece.post_liked(req.user.id, (posts_liked) => {
@@ -108,7 +109,7 @@ router.get('/profile', (req, res, next) => {
       });});
   });});
 
-router.get('/view/:id', (req, res, next) => {
+router.get('/view/:id',protected, (req, res, next) => {
   userId=req.params['id'];
   datasource.get(userId, (user) => {
     postsourece.retrieveperuser(userId, (posts) => {
@@ -119,18 +120,11 @@ router.get('/view/:id', (req, res, next) => {
 });
 
 /*--------changes password--------------*/
-router.post('/edit_password/', (req, res, next) => {
+router.post('/edit_password/',protected, (req, res, next) => {
   datasource.Editing_password(req.body, req.user, (result) => {
+    console.log(result)
     res.send(result);
   });
 });
-router.get('/edit_password/', (req, res, next) => {
-  var profile = req.body;
-    res.render('user_edit_password');
-});
-
-
-
-
 
 module.exports = router;

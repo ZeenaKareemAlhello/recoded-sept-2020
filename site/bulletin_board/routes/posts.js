@@ -6,6 +6,7 @@ var datasource = require('../data/posts.js');
 /** EJS: A list of the recent posts on the Bulletin Board. */
 router.get('/recent', (req, res, next) => {
   datasource.recent(req.user.id, (posts) => {
+    console.log(req.user.id)
     res.render('post_list', { id: 'recent', title: 'Recent Posts', posts: posts });
   });
 });

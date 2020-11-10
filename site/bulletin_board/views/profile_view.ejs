@@ -12,7 +12,13 @@
 
             <div class="profile_left_side_text">
 
-                <a style="color: white; font-size:20px;"><%= user.username %></a>
+                <a style="color: white; font-size:20px;">
+                    <% if(user.firstName && user.lastName) { %> 
+                    <%= user.firstName + " " +  user.lastName%>
+                    <% }else{ %> 
+                    <%= user.username%>
+                    <% } %> 
+                </a>
                 </div>               
             <div class="profile_left_side_text">
                 <a>bio</a>
