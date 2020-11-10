@@ -325,3 +325,17 @@ font-size: 12px;
   {
     background-color:#2E3841 ;
   }
+.save-Button
+{
+  display: block;
+  width: 40%;
+height: 35px;
+  background-color: #3AD89B;
+  border: none;
+  color: white;
+  text-align: center;
+  text-decoration: none;
+  border-radius: 50px;
+  font-size: 15px;
+
+}

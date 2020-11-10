@@ -16,10 +16,6 @@ router.post('/Editing_profiles', (req, res, next) => {
  });
 
 });
-router.get('/Editing_profiles', (req, res, next) => {
- res.render('Editing_profiles');
- 
-});
 
 /**
  * The "Login" endpoint.
