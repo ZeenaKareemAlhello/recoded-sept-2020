@@ -17,7 +17,7 @@ router.post('/Editing_profiles',protected, (req, res, next) => {
  });
 
 });
-router.get('/Editing_profiles', (req, res, next) => {
+router.get('/Editing_profiles',protected, (req, res, next) => {
  res.render('Editing_profiles');
  
 });
