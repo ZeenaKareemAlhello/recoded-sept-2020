@@ -1,7 +1,7 @@
 <%- include('header', { title: title }); %>
 <%- include('nav_bar', { id: id }); %>
-
-<div class="container py-3">
+<div style=" background: #202D36">
+<div class="container py-3" >
   <div class="row">
     <div class="col-lg-8 col-md-10 mx-auto">
 
@@ -10,9 +10,9 @@
       <% posts.forEach(function(post){ %>
         <%- include('post_list_item', { post: post }); %>
       <% }); %>
-
+ 
     </div>
   </div>
 </div>
-
+</div>
 <%- include('footer', { javascript_uri: null }); %>
