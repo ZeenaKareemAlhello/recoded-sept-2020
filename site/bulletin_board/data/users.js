@@ -76,8 +76,12 @@ users.signup = (credentials, callback) => {
   }
 
   bcrypt.hash(credentials.password, saltRounds, (err, passwordHash) => {
-    var sql ='INSERT INTO users (username, passwordHash) VALUES (?, ?)';
-    var params =[credentials.username, passwordHash];
+    var months = [ "January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December" ];
+      var date = new Date();
+      var now = months[date.getMonth()] + " " + date.getDate() + ", " + date.getFullYear();
+
+    var sql ='INSERT INTO users (username, passwordHash, join_data,image_url) VALUES (?, ?,?,?)';
+    var params =[credentials.username, passwordHash, now,'https://avatars.abstractapi.com/v1/?api_key=f964c9732f4341ad94d1478a21bc4e12&image_size=400&name='+credentials.username];
     db.run(sql, params, function (err, result){
       var success = false;
       var error_message = "";
@@ -118,12 +122,11 @@ users.get = (id, callback) => {
       callback(null);
       return;
     }
-    var user = {
-      id: row.id,
-      username: row.username
-    };
-    callback(user);
+    callback(row);
   });
 };
+
+
+
 
 module.exports = users;

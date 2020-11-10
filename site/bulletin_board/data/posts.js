@@ -42,7 +42,8 @@ posts.retrieve = (id, userId, callback) => {
     callback({
       id: row.id,
       title: row.title,
-      author: row.user_id,
+      author: row.author,
+      authorid: row.authorid,
       date: row.date,
       liked: row.liked,
       url: "/posts/" + id,
@@ -51,6 +52,66 @@ posts.retrieve = (id, userId, callback) => {
   });
 };
 
+
+posts.retrieveperuser = (userId, callback) => {
+  var sql = `
+    SELECT
+      Posts.id AS id,
+      Posts.title,
+      Author.username AS author,
+      Author.id AS authorid,
+      Posts.date,
+      Posts.body AS body,
+      PostUpvotes.post_id IS NOT NULL AS liked,
+      '/posts/' + Posts.id AS url
+    FROM
+      Posts
+      INNER JOIN Users AS Author ON Posts.user_id = Author.id
+      LEFT OUTER JOIN PostUpvotes ON PostUpvotes.post_id = Posts.id AND PostUpvotes.user_id = Author.id
+    WHERE
+    Author.id = ?
+    ORDER BY
+      date DESC
+  `;
+  db.all(sql, [userId ], (err, rows) => {
+    if (err) {
+      callback([]);
+      return;
+    }
+    callback(rows);
+  });
+}
+
+
+
+posts.post_liked = (userId, callback) => {
+  var sql = `
+    SELECT
+      Posts.id AS id,
+      Posts.title,
+      Author.username AS author,
+      Author.id AS authorid,
+      Posts.date,
+      Posts.body AS body,
+      PostUpvotes.post_id IS NOT NULL AS liked,
+      '/posts/' + Posts.id AS url
+    FROM
+      Posts
+      INNER JOIN Users AS Author ON Posts.user_id = Author.id
+      INNER JOIN PostUpvotes ON PostUpvotes.post_id = Posts.id AND PostUpvotes.user_id = ?
+    WHERE
+    liked = 1
+    ORDER BY
+      date DESC
+  `;
+  db.all(sql, [userId], (err, rows) => {
+    if (err) {
+      callback([]);
+      return;
+    }
+    callback(rows);
+  });
+}
 /**
  * Retrieves a list of post excerpts for the most recent posts.
  * {
@@ -69,6 +130,7 @@ posts.recent = (userId, callback) => {
       Posts.title,
       Author.username AS author,
       Posts.date,
+      Author.id AS authorid,
       PostUpvotes.post_id IS NOT NULL AS liked,
       '/posts/' + Posts.id AS url,
       substr(Posts.body, 0, 140) AS excerpt
@@ -114,6 +176,7 @@ posts.trending = (userId, callback) => {
       Posts.title,
       Author.username AS author,
       Posts.date,
+      Author.id AS authorid,
       PostUpvotes.post_id IS NOT NULL AS liked,
       '/posts/' + Posts.id AS url,
       substr(Posts.body, 0, 140) AS excerpt
