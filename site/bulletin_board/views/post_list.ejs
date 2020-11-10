@@ -9,6 +9,7 @@
 
       <% posts.forEach(function(post){ %>
         <%- include('post_list_item', { post: post }); %>
+        <% console.log(post) %>
       <% }); %>
  
     </div>

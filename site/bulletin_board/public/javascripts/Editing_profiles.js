@@ -27,8 +27,9 @@ $("#save-Button").click((event) => {
   profile_error.hide();
 
 Editing_profiles(firstName, lastName, birthdate,bio,gender,function(result){
+  console.log(result)
   if (result.success) {
-    document.location = result.redirect_uri;
+    document.location = "/users/profile"
   } else {
     profile_error_message.text(result.error_message);
     profile_error.show();

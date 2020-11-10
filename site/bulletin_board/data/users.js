@@ -29,7 +29,10 @@ WHERE id = ?
 `
 var params =[Editing.firstName,Editing.lastName,Editing.birthdate,Editing.bio,Editing.gender,user.id];
 db.run(sql, params, function (err, result) {
-  callback();
+  var result = {
+    success: true,
+  }
+  callback(result);
 });
 }
 
