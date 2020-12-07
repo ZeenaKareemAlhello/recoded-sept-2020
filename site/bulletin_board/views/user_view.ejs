@@ -10,19 +10,19 @@
             </div>
             <div class="profile_left_side_text">
                 <a style="color: white; font-size:20px;">
-                    <%if (user.firstName){%>
-                    <%= user.firstName %>
-                    <%}else{%>
-                    <%= "privet" %>
-                    <% } %></a>
-                </div>               
+                    <% if(user.firstName && user.lastName) { %> 
+                        <%= user.firstName + " " +  user.lastName%>
+                        <% }else{ %> 
+                        <%= user.username%>
+                        <% } %> 
+                    </div>               
             <div class="profile_left_side_text">
                 <a>bio : </a>
                 <span> 
                     <%if (user.bio){%>
                         <%= user.bio %>
                         <%}else{%>
-                        <%= "i am human!" %>
+                        <%= "someone" %>
                         <% } %>
                 </span>
                 </div>               

@@ -10,7 +10,6 @@ var protected = require('connect-ensure-login').ensureLoggedIn('/');
 
 router.post('/Editing_profiles', (req, res, next) => {
   var profile = req.body;
-  // console.log(profile.bio);
   datasource.Editing_profiles(profile, req.user, (result) => {
    
    res.send(result);
@@ -122,7 +121,6 @@ router.get('/view/:id',protected, (req, res, next) => {
 /*--------changes password--------------*/
 router.post('/edit_password/',protected, (req, res, next) => {
   datasource.Editing_password(req.body, req.user, (result) => {
-    console.log(result)
     res.send(result);
   });
 });

@@ -15,7 +15,6 @@ $('#post-comment').on('submit',function(e){
     // fun ajax endpoint
 
     create_comment(comment,post_id,(data)=>{
-      console.log(data.date)
       $('#display_comments').append(`
    <li class="m-3 d-flex flex-row "> 
    <div class="">

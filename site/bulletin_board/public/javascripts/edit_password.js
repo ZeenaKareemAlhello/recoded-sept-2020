@@ -11,7 +11,6 @@ $("#save_button").click((event) => {
     edit_password(newPassword.val(), oldPassword.val(), confirmPassword.val(),function(result){
     if (result.success) {
       document.location = "/";
-      console.log("i am in editpass js "+ result)
 
     } else {
       profile_error_message.text(result.error_message);

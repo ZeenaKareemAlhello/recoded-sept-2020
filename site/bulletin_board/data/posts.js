@@ -330,7 +330,6 @@ function maniplateDate(date){
                      comment:comment,
                      date:maniplateDate(date)
                  };       
-    //  console.log(result.user['username'])     
       callback(result)
    }) 
    stmt.finalize();

@@ -27,7 +27,6 @@ $("#save-Button").click((event) => {
   profile_error.hide();
 
 Editing_profiles(firstName, lastName, birthdate,bio,gender,function(result){
-  console.log(result)
   if (result.success) {
     document.location = "/users/profile"
   } else {
@@ -41,8 +40,13 @@ Editing_profiles(firstName, lastName, birthdate,bio,gender,function(result){
 $("#edit_password").click((event) => {
   $("#passwordpageview").css("display", "block");
   $("#editinfo").css("display", "none");
+  $("#edit_password").css("color", "#32D89B");
+  $("#viewinfoedit").css("color", "#4D6476");
 })
 $("#viewinfoedit").click((event) => {
   $("#passwordpageview").css("display", "none");
   $("#editinfo").css("display", "flex");
+  $("#edit_password").css("color", "#4D6476");
+  $("#viewinfoedit").css("color", "#32D89B");
+
 })

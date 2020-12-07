@@ -232,7 +232,7 @@ function create_comment(commentt,post_id,callback){
              callback(data)
      },
     error: function(error){
-      console.log('error',error)
+      callback(error)
     }
   })
 }
@@ -245,7 +245,7 @@ function remove_comment(comment_id,callback){
       callback()
     },
     error: function(error){
-      console.log('error',error)
+      callback(error)
     }
   })
 }
@@ -265,8 +265,8 @@ function edit_comment(comment_id,commentMessage,callback){
        callback(newComment)
        },
        error: function(error){
-         console.log('error',error)
-       }
+        callback(error)
+      }
      })
     }
   

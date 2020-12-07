@@ -22,7 +22,13 @@
                 </div>               
             <div class="profile_left_side_text">
                 <a>bio</a>
-                <span> <%= user.bio%></span>
+                <span>
+                    <%if (user.bio){%>
+                    <%= user.bio %>
+                    <%}else{%>
+                    <%= "someone" %>
+                    <% } %>
+                </span>
                 </div>               
                 <div class="row">
                     <div class="col-6">
